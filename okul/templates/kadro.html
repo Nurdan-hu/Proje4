@@ -1,0 +1,42 @@
+{% extends 'kalıpana.html' %}
+
+{% block baslik %}
+Kadromuz
+{% endblock %}
+
+{% block anaicerik %}
+<h3>Okul Kadro Listesi</h3>
+
+<a href="/ogretmen/ekle" class="btn btn-primary">Öğretmen Ekle</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Adı Soyadı</th>
+      <th scope="col">Branşı</th>
+      <th scope="col">Sınıfı</th>
+      <th scope="col">Açıklama</th>
+      <th scope="col">İşlemler</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in aktarilanListe %}
+    <tr>
+      <th scope="row">{{x.id}}</th>
+      <td>{{ x.AdiSoyadi }}</td>
+      <td>{{ x.Bransi }}</td>
+      <td>{{ x.Sinifi }}</td>
+      <td>{{ x.Aciklama }}</td>
+      <td>
+        <a href="ogretmen/duzenle/{{ x.id }}" class="btn btn-primary btn-sm">Düzelt</a>
+        <a href="ogretmen/sil/{{ x.id }}" class="btn btn-danger btn-sm">Sil</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="/" type="button" class="btn btn-outline-info"> Anasayfaya dön</a>
+{% endblock %}
